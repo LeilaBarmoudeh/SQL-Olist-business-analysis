@@ -1,0 +1,72 @@
+
+
+```markdow
+# Data Dictionary
+
+## gold_dim_customers
+Customer dimension table.
+
+Columns:
+- `customer_id`: customer identifier linked to fact tables
+- `customer_unique_id`: unique customer identity
+- `customer_zip_code_prefix`: customer zip prefix
+- `customer_city`: customer city
+- `customer_state`: customer state
+
+## gold_dim_sellers
+Seller dimension table.
+
+Columns:
+- `seller_id`: seller identifier
+- `seller_zip_code_prefix`: seller zip prefix
+- `seller_city`: seller city
+- `seller_state`: seller state
+
+## gold_dim_product
+Product dimension table.
+
+Columns:
+- `product_id`: product identifier
+- `product_category_name`: category name
+- `product_name_length`: length of product name
+- `product_description_length`: length of product description
+- `product_photos_qty`: number of product photos
+- `product_weight_g`: product weight in grams
+- `product_length_cm`: product length
+- `product_height_cm`: product height
+- `product_width_cm`: product width
+
+## gold_fact_sales
+Order-level fact table.
+
+Columns:
+- `order_id`: order identifier
+- `customer_id`: customer identifier
+- `order_status`: status of order
+- `order_purchase_ts`: purchase timestamp
+- `order_delivered_customer_ts`: actual delivery timestamp
+- `order_estimated_delivery_ts`: estimated delivery timestamp
+- `is_late_delivery`: flag indicating whether delivery was late
+- `items_value`: value of items
+- `freight_value`: freight charge
+- `payment_value`: order payment amount
+- `gross_value`: gross order value
+
+## gold_fact_sales_items
+Item-level fact table.
+
+Columns:
+- `order_id`: order identifier
+- `customer_id`: customer identifier
+- `order_status`: order status
+- `order_purchase_ts`: purchase timestamp
+- `order_delivered_customer_ts`: actual delivery timestamp
+- `order_estimated_delivery_ts`: estimated delivery timestamp
+- `is_late_delivery`: late delivery flag
+- `order_item_id`: item sequence within order
+- `product_id`: product identifier
+- `seller_id`: seller identifier
+- `price`: item price
+- `freight_value`: freight value
+- `gross_item_value`: gross item value
+- `payment_value`: payment amount
